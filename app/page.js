@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Card from "./Card";
+import LogoInitial from "./LogoInitial";
 
 export default function Home() {
   const [images, setImages] = useState([]);
@@ -52,7 +53,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="navbar bg-base-100 shadow-sm">
+      <div className="navbar bg-gray-600 shadow-lg">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl">FinderProyect</a>
         </div>
@@ -61,15 +62,15 @@ export default function Home() {
             <input
               id="search"
               type="text"
-              placeholder="Search"
+              placeholder="Search Anything"
               className="input input-bordered w-24 md:w-auto"
-              defaultValue="test"
               {...register("search")}
             />
           </form>
         </div>
       </div>
       <main className="pt-10 flex flex-wrap items-center justify-center gap-5 bg-base-100">
+        {images.length === 0 ? LogoInitial() : null}
         {mapImages(images)}
       </main>
     </>
